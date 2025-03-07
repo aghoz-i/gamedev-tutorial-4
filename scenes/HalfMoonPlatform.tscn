@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdw28pjwroofg"]
+
+[ext_resource type="Texture2D" uid="uid://cluh2ekc38ktx" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_gr_dirt.png" id="1_etvxf"]
+
+[node name="HalfMoonPlatform" type="AnimatableBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_etvxf")
+region_enabled = true
+region_rect = Rect2(384.884, 0, 255.169, 126.265)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-128, -55, -128, -63, 128, -63, 128, -14, 120, 14, 98, 36, 52, 57, 21, 63, -21, 63, -66, 53, -94, 40, -116, 19, -128, -10)

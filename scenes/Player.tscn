@@ -1,6 +1,5 @@
-[gd_scene load_steps=8 format=3 uid="uid://bc2fujtl13g10"]
+[gd_scene load_steps=7 format=3 uid="uid://bc2fujtl13g10"]
 
-[ext_resource type="Script" path="res://scenes/player.gd" id="1_xsgpf"]
 [ext_resource type="Texture2D" uid="uid://dhsqj8dybb7fq" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_alien.png" id="2"]
 
 [sub_resource type="RectangleShape2D" id="1"]
@@ -56,13 +55,12 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sbh6e"]
 _data = {
-"Idle": SubResource("2"),
-"Jump": SubResource("3"),
-"Walk": SubResource("4")
+&"Idle": SubResource("2"),
+&"Jump": SubResource("3"),
+&"Walk": SubResource("4")
 }
 
 [node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_xsgpf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("1")
@@ -72,9 +70,9 @@ position = Vector2(0, -25)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2")
 hframes = 4
-frame = 2
 
 [node name="Animator" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_sbh6e")
+&"": SubResource("AnimationLibrary_sbh6e")
 }
+autoplay = "Walk"

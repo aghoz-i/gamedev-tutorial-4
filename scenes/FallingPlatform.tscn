@@ -1,0 +1,76 @@
+[gd_scene load_steps=8 format=3 uid="uid://briur5loenhq0"]
+
+[ext_resource type="Texture2D" uid="uid://cluh2ekc38ktx" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_gr_dirt.png" id="1_4mgfl"]
+[ext_resource type="Script" uid="uid://bf3bx0afnc4pk" path="res://scenes/falling_platform.gd" id="1_evnvy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_evnvy"]
+size = Vector2(128, 72)
+
+[sub_resource type="Animation" id="Animation_4mgfl"]
+resource_name = "Freeze"
+
+[sub_resource type="Animation" id="Animation_evnvy"]
+resource_name = "Shake"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(7, 0), Vector2(-7, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.0497023, 0.0488692, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8vglk"]
+_data = {
+&"Freeze": SubResource("Animation_4mgfl"),
+&"Shake": SubResource("Animation_evnvy")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4mgfl"]
+size = Vector2(128, 60)
+
+[node name="FallingPlatform" type="RigidBody2D"]
+script = ExtResource("1_evnvy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_4mgfl")
+region_enabled = true
+region_rect = Rect2(0, 128, 128, 72)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_evnvy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_8vglk")
+}
+autoplay = "Shake"
+
+[node name="FallingTriggerArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallingTriggerArea"]
+position = Vector2(0, -66)
+shape = SubResource("RectangleShape2D_4mgfl")
+
+[node name="Timer" type="Timer" parent="FallingTriggerArea"]
+
+[connection signal="body_entered" from="FallingTriggerArea" to="." method="_on_falling_trigger_area_body_entered"]
+[connection signal="timeout" from="FallingTriggerArea/Timer" to="." method="_on_timer_timeout"]
