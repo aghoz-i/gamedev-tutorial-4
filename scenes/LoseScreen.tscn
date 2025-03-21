@@ -49,6 +49,18 @@ tracks/3/keys = {
 "points": PackedFloat32Array(0, -0.15, 0, 0.15, 0, 1, -0.15, 0, 0.15, 0),
 "times": PackedFloat32Array(0, 0.3)
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RestartText:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="Animation" id="Animation_aeugc"]
 resource_name = "Fade Out"
@@ -97,6 +109,18 @@ tracks/3/keys = {
 "points": PackedFloat32Array(1, -0.15, 0, 0.15, 0, 0, -0.15, 0, 0.15, 0),
 "times": PackedFloat32Array(0, 0.3)
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RestartText:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="Animation" id="Animation_x3j6d"]
 length = 0.001
@@ -144,12 +168,24 @@ tracks/3/keys = {
 "points": PackedFloat32Array(1, -0.15, 0, 0.15, 0),
 "times": PackedFloat32Array(0)
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RestartText:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_aeugc"]
 _data = {
-&"Fade In": SubResource("Animation_5ma5d"),
-&"Fade Out": SubResource("Animation_aeugc"),
-&"RESET": SubResource("Animation_x3j6d")
+"Fade In": SubResource("Animation_5ma5d"),
+"Fade Out": SubResource("Animation_aeugc"),
+"RESET": SubResource("Animation_x3j6d")
 }
 
 [node name="LoseScreen" type="CanvasLayer"]
@@ -161,5 +197,14 @@ texture = ExtResource("1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-&"": SubResource("AnimationLibrary_aeugc")
+"": SubResource("AnimationLibrary_aeugc")
 }
+
+[node name="RestartText" type="RichTextLabel" parent="."]
+visible = false
+offset_left = 278.0
+offset_top = 382.0
+offset_right = 890.0
+offset_bottom = 454.0
+theme_override_font_sizes/normal_font_size = 50
+text = "Respawning in 5 second..."

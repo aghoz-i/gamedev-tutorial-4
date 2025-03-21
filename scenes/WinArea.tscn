@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://12hti5ana1pi"]
 
-[ext_resource type="Script" uid="uid://xle75t60d2w5" path="res://scenes/win_area.gd" id="1_0cone"]
+[ext_resource type="Script" path="res://scenes/win_area.gd" id="1_0cone"]
 [ext_resource type="Texture2D" uid="uid://chgqimvh7rdh6" path="res://assets/Familiar Looking Rocket.png" id="1_f67vg"]
 [ext_resource type="PackedScene" uid="uid://cupi20tdmqvb" path="res://scenes/WinScreen.tscn" id="3_ftehc"]
 

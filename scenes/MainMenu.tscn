@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3 uid="uid://b6lgdbnwgebkj"]
+
+[ext_resource type="FontFile" uid="uid://g0e4g4332ft0" path="res://assets/Fonts/Raw/CC Wild Words Roman.ttf" id="1_1ccas"]
+[ext_resource type="Texture2D" uid="uid://ch5ret1dd7qk3" path="res://assets/kenney_platformerpack/PNG/Backgrounds/blue_grass.png" id="1_isndy"]
+[ext_resource type="FontFile" uid="uid://cth60gqdxo73p" path="res://assets/Fonts/Raw/continuum bold.ttf" id="2_0ms2r"]
+[ext_resource type="Script" path="res://link_button.gd" id="3_4oxu8"]
+[ext_resource type="Texture2D" uid="uid://chgqimvh7rdh6" path="res://assets/Familiar Looking Rocket.png" id="4_mu0fx"]
+[ext_resource type="Script" path="res://scenes/StageSelect.gd" id="5_s5yk5"]
+
+[node name="MainMenu" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(568, 353)
+scale = Vector2(1.14062, 0.726562)
+texture = ExtResource("1_isndy")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_1ccas")
+theme_override_font_sizes/font_size = 19
+text = "unu judul
+tuturuul gum duv unum"
+
+[node name="New Game" type="LinkButton" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.262745, 0.835294, 1)
+theme_override_colors/font_hover_color = Color(0.427162, 0.619077, 1, 1)
+theme_override_fonts/font = ExtResource("2_0ms2r")
+text = "New Game!"
+script = ExtResource("3_4oxu8")
+scene_to_load = "Level1"
+
+[node name="Stage Select" type="LinkButton" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.00032084, 0.264576, 0.833396, 1)
+theme_override_colors/font_hover_color = Color(0.427451, 0.619608, 1, 1)
+theme_override_fonts/font = ExtResource("2_0ms2r")
+text = "Stage Select!"
+script = ExtResource("5_s5yk5")
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_mu0fx")
+stretch_mode = 2
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/New Game" to="HBoxContainer/VBoxContainer/New Game" method="_on_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Stage Select" to="HBoxContainer/VBoxContainer/Stage Select" method="_on_pressed"]

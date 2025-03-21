@@ -1,3 +1,4 @@
+# Tutorial 4
 ## Pembuatan Level Baru
 ### Pembuatan World:
 #### Menggunakan Tile Map:
@@ -44,3 +45,37 @@ Ketika saya menekan tombol jump, akan seringkali tidak terbaca karena mayoritas 
 Oleh itu, saya memanfaatkan `get_floor_normal` yang akan mengembalikan (+,+) ketika berada di *ramp down* ke kanan, dan mengembalikan (-,+) ketika berada di *ramp down* ke arah kiri.
 Dengan memanfaatkan properti ini, beserta `is_on_floor`, saya menambahkan extra velocity.y yang mendorong `Player` ke bawah ketika menuruni ramp bersamaan dengan menekan tombol kanan/kiri yang bersesuaian dengan arah ramp turun, sehingga `Player` tidak akan memantul-mantul.
 Hal ini juga memberi kesan lebih baik pada input jump di ramp down, dengan input jump selalu dapat dibaca, karena mayoritas waktu, `Player` benar-benar ada di lantai.
+
+# Tutorial 6
+Pada tutorial kali ini, digunakan progress tutorial 4 sebagai base untuk memulai.
+Beberapa fitur terkait GUI juga ada yang sudah diimplementasikan di tutorial 4, seperti `LoseScreen` ketika `Player` mati, atau `WinScreen` ketika player menyelesaikan Level.
+Berikut adalah beberapa fitur yang ditambahkan pada Tutorial 6 ini, terutama yang berkaitan dengan tampilan dan GUI game.
+
+## Main Menu
+Pada Tutorial ini, sudah ditambahkan scene `MainMenu`, yang dibuat mengikuti panduan tutorial.
+Namun, terdapat beberapa peningkatan yang ditambahkan, yaitu `Stage Select` sekarang dapat ditekan, yang mana akan mengarahkan ke scene `StageSelect`. Selain itu, telah ditambahkan background menggunakan `Sprite2D` untuk mempercantik tampilan Main Menu.
+
+## Stage Select
+Pada scene `StageSelect`, digunakan 2 `LinkButton` yang masing-masing akan mengarah ke scene `Level1` dan `Level2`.
+Dengan adanya ini, maka pemain dapat langsung memilih level yang ingin dimainkan tanpa perlu memainkan game dari paling awal, yaitu `Level1`.
+
+## LoseScreen
+Fitur ini sudah ada sebelumnya pada tutorial 4, yang mana ketika `Player` mati, maka akan muncul gambar bertuliskan "You Lose".
+Kemudian, logic game akan otomatis menunggu sekitar 4 detik (dengan memanfaatkan node `Timer`), dan me-reload scene.
+Namun, belum ada pemberitahuan ke pemain apa yang sedang terjadi, sehingga dapat membuat pemain bingung.
+Pada tutorial 6 ini, telah ditambahkan text bersama dengan gambar tersebut, yang memberitahukan bahwa `Player` akan respawn dalam 5 detik.
+
+## Lives
+Telah ditambahkan fitur lives juga, dengan mengikuti panduan tutorial.
+
+## GameOver
+Selain itu, ditambahkan juga scene `GameOver`, yang akan terpicu ketika lives dari `Player` telah mencapai 0.
+Implementasi ini mengikuti panduan tutorial.
+Namun, terdapat tambahan yaitu dua `LinkButton`, untuk restart (`RestartButton`) dan juga kembali ke Main Menu (`ReturnToMainMenuButton`).
+
+## WinScreen
+Pada game ini, terdapat dua WinScreen untuk masing-masing Level.
+Perbedaan kedua WinScreen ini adalah pada text yang ditampilkan untuk komunikasi dengan pemain game.
+Pada WinScreen Level 1, text yang ditampilkan adalah "loading level 2", yang mana akan menunggu sekitar 5 detik, dan kemudian pemain akan diarahkan ke scene `Level2`.
+Sedangkan pada Level 2, text yang ditampilkan adalah "press R to return to main menu".
+Pada Level 2 ini, pemain dapat menekan tombol r pada keyboard, untuk kembali ke Main menu.

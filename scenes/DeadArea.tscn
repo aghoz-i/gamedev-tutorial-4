@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://di6f8tfs7tfr4"]
 
-[ext_resource type="Script" uid="uid://cbqolssb2bf0a" path="res://scenes/dead_area.gd" id="1_w5swx"]
+[ext_resource type="Script" path="res://scenes/dead_area.gd" id="1_w5swx"]
 [ext_resource type="PackedScene" uid="uid://bejfw7rwdvsmd" path="res://scenes/LoseScreen.tscn" id="2_ywej6"]
 
 [node name="DeadArea" type="Area2D"]

@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://daptuqy86w0i8"]
+
+[ext_resource type="FontFile" uid="uid://g0e4g4332ft0" path="res://assets/Fonts/Raw/CC Wild Words Roman.ttf" id="1_wwin7"]
+[ext_resource type="FontFile" uid="uid://cth60gqdxo73p" path="res://assets/Fonts/Raw/continuum bold.ttf" id="2_lorsr"]
+[ext_resource type="Script" path="res://scenes/RestartButton.gd" id="3_8ou6a"]
+[ext_resource type="Script" path="res://scenes/ReturnMainMenuButton.gd" id="4_oegut"]
+
+[node name="ColorRect" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.151344, 0.108333, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -408.5
+offset_top = -60.5
+offset_right = 408.5
+offset_bottom = 60.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_wwin7")
+theme_override_font_sizes/font_size = 136
+text = "GAME OVER"
+
+[node name="RestartButton" type="LinkButton" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_lorsr")
+theme_override_font_sizes/font_size = 30
+text = "Restart"
+script = ExtResource("3_8ou6a")
+
+[node name="ReturnMainMenuButton" type="LinkButton" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_lorsr")
+theme_override_font_sizes/font_size = 30
+text = "Return to Main Menu"
+script = ExtResource("4_oegut")
+
+[connection signal="pressed" from="VBoxContainer/RestartButton" to="VBoxContainer/RestartButton" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/ReturnMainMenuButton" to="VBoxContainer/ReturnMainMenuButton" method="_on_pressed"]

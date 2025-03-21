@@ -1,14 +1,15 @@
-[gd_scene load_steps=19 format=4 uid="uid://yqmk0vpvnyxr"]
+[gd_scene load_steps=20 format=4 uid="uid://yqmk0vpvnyxr"]
 
 [ext_resource type="PackedScene" uid="uid://bc2fujtl13g10" path="res://scenes/Player.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://cluh2ekc38ktx" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_gr_dirt.png" id="2_bwv4p"]
-[ext_resource type="Script" uid="uid://6jt63bgjw0pq" path="res://scenes/Player.gd" id="2_odhdn"]
+[ext_resource type="Script" path="res://scenes/Player.gd" id="2_odhdn"]
 [ext_resource type="PackedScene" uid="uid://bdw28pjwroofg" path="res://scenes/HalfMoonPlatform.tscn" id="4_dw26h"]
 [ext_resource type="PackedScene" uid="uid://di6f8tfs7tfr4" path="res://scenes/DeadArea.tscn" id="5_lrl65"]
 [ext_resource type="PackedScene" uid="uid://briur5loenhq0" path="res://scenes/FallingPlatform.tscn" id="6_76388"]
-[ext_resource type="PackedScene" uid="uid://12hti5ana1pi" path="res://scenes/WinArea.tscn" id="7_svatc"]
 [ext_resource type="Texture2D" uid="uid://cvuv75kt8mvxt" path="res://assets/kenney_platformerpack/PNG/Backgrounds/blue_desert.png" id="8_ecr63"]
 [ext_resource type="PackedScene" uid="uid://dvn2qtbhnhm3d" path="res://scenes/Spawner.tscn" id="9_n34uq"]
+[ext_resource type="PackedScene" uid="uid://dr4h8ibkcec08" path="res://scenes/WinAreaLevel1.tscn" id="10_2u31r"]
+[ext_resource type="PackedScene" uid="uid://d3erc76y5ko7k" path="res://scenes/LifeCounter.tscn" id="10_pu7gq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_odhdn"]
 texture = ExtResource("2_bwv4p")
@@ -89,8 +90,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_76388"]
 _data = {
-&"MovePlatformBackAndForth": SubResource("Animation_dw26h"),
-&"RESET": SubResource("Animation_lrl65")
+"MovePlatformBackAndForth": SubResource("Animation_dw26h"),
+"RESET": SubResource("Animation_lrl65")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lrl65"]
@@ -154,8 +155,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kbo48"]
 _data = {
-&"Move": SubResource("Animation_n34uq"),
-&"RESET": SubResource("Animation_kbo48")
+"Move": SubResource("Animation_n34uq"),
+"RESET": SubResource("Animation_kbo48")
 }
 
 [node name="Level1" type="Node2D"]
@@ -180,12 +181,13 @@ position = Vector2(495, 65)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="HalfMoonPlatform"]
 libraries = {
-&"": SubResource("AnimationLibrary_76388")
+"": SubResource("AnimationLibrary_76388")
 }
 autoplay = "MovePlatformBackAndForth"
 
 [node name="DeadArea" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("5_lrl65")]
 camera = NodePath("../Player/Camera2D")
+sceneName = "Level1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeadArea"]
 position = Vector2(2465.5, 1331)
@@ -207,9 +209,6 @@ freeze = true
 position = Vector2(2674, 36)
 freeze = true
 
-[node name="WinArea" parent="." instance=ExtResource("7_svatc")]
-position = Vector2(4078, -619)
-
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -226,6 +225,13 @@ position = Vector2(1499, -64)
 
 [node name="BugMovement" type="AnimationPlayer" parent="Bug"]
 libraries = {
-&"": SubResource("AnimationLibrary_kbo48")
+"": SubResource("AnimationLibrary_kbo48")
 }
 autoplay = "Move"
+
+[node name="LivesGUI" type="CanvasLayer" parent="."]
+
+[node name="GUI" parent="LivesGUI" instance=ExtResource("10_pu7gq")]
+
+[node name="WinAreaLevel1" parent="." instance=ExtResource("10_2u31r")]
+position = Vector2(4070, -627)

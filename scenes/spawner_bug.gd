@@ -12,6 +12,9 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		$BugArea.set_deferred("monitoring", false)
 		$LoseScreen.show()
 		$LoseScreen/AnimationPlayer.play("Fade In")
+		Global.lives -= 1
+		if (Global.lives == 0):
+			get_tree().call_deferred("change_scene_to_file", ("res://scenes/GameOver.tscn"))
 		timer.start()
 
 func _on_timer_timeout() -> void:

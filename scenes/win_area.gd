@@ -5,17 +5,19 @@ func _on_ready():
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
+		$WinScreen/RestartText.text = "Press R to return to main menu!"
 		$WinScreen.show()
 		$WinScreen/AnimationPlayer.play("Fade In")
 		set_process(true)
 
 func _process(delta):
 	if Input.is_key_pressed(KEY_R):
-		restart_game()
+		return_to_main_menu()
 
-func restart_game():
+func return_to_main_menu():
 	set_process(false)
 	$WinScreen/AnimationPlayer.play("Fade Out")
 	await $WinScreen/AnimationPlayer.animation_finished
 	$WinScreen.hide()
-	get_tree().reload_current_scene()
+	get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
+	
