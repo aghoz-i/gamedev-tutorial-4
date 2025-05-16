@@ -1,11 +1,38 @@
 [gd_scene load_steps=9 format=3 uid="uid://dvn2qtbhnhm3d"]
 
-[ext_resource type="Script" uid="uid://b2ispt8reoxnr" path="res://scenes/spawner_bug.gd" id="1_5y6d2"]
+[ext_resource type="Script" path="res://scenes/spawner_bug.gd" id="1_5y6d2"]
 [ext_resource type="Texture2D" uid="uid://bop1k0vj7up0w" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_enemies.png" id="1_qcsvw"]
 [ext_resource type="PackedScene" uid="uid://bejfw7rwdvsmd" path="res://scenes/LoseScreen.tscn" id="3_cuo7d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5y6d2"]
 size = Vector2(106, 60)
+
+[sub_resource type="Animation" id="Animation_5y6d2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3, 54)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_qcsvw"]
 resource_name = "Walk"
@@ -36,37 +63,10 @@ tracks/1/keys = {
 "values": [2, 0]
 }
 
-[sub_resource type="Animation" id="Animation_5y6d2"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(3, 54)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cuo7d"]
 _data = {
-&"RESET": SubResource("Animation_5y6d2"),
-&"Walk": SubResource("Animation_qcsvw")
+"RESET": SubResource("Animation_5y6d2"),
+"Walk": SubResource("Animation_qcsvw")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cuo7d"]
@@ -88,7 +88,7 @@ shape = SubResource("RectangleShape2D_5y6d2")
 
 [node name="BugWalkingAnimation" type="AnimationPlayer" parent="."]
 libraries = {
-&"": SubResource("AnimationLibrary_cuo7d")
+"": SubResource("AnimationLibrary_cuo7d")
 }
 
 [node name="BugArea" type="Area2D" parent="."]
