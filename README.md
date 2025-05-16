@@ -79,3 +79,23 @@ Perbedaan kedua WinScreen ini adalah pada text yang ditampilkan untuk komunikasi
 Pada WinScreen Level 1, text yang ditampilkan adalah "loading level 2", yang mana akan menunggu sekitar 5 detik, dan kemudian pemain akan diarahkan ke scene `Level2`.
 Sedangkan pada Level 2, text yang ditampilkan adalah "press R to return to main menu".
 Pada Level 2 ini, pemain dapat menekan tombol r pada keyboard, untuk kembali ke Main menu.
+
+# Tutorial 8
+## Pembuatan partikel hujan dan step dari player
+### Partikel Hujan:
+Untuk bagian ini, telah ditambahkan partikel hujan di Level 1, dan Level 2.
+Namun, terdapat beberapa bagian yang perlu disesuaikan, dikarenakan saya melanjutkan dari tutorial-6.
+Contohnya, ukuran box untuk spawn partikel hujan perlu diperlebar (dibanding dengan di tutorial), karena levelnya lebih lebar.
+
+### Partikel Step Player:
+Untuk bagian ini, saya mengikuti instruksi dari dokumen tutorial-8.
+Namun saya menemukan masalah dimana ketika player berjalan, partikel akan terbang menjauh dengan cepat, sehingga tidak terlihat bagus.
+Masalah ini belum saya temukan solusinya, namun asumsi saya, masalah tersebut mungkin berkaitan dengan Camera, ViewBox untuk spawner Partikel, dan properti Local Corrdinate.
+
+## Game Balancing
+Untuk bagian ini, karena saya melanjutkan dari tutorial-6, maka untuk melakukan game balancing sesuai dengan yang ada di dokumen tutorial-8, saya menambahkan beberapa scene baru yang "dicopas manual" dari repo tutorial-8 yang terdapat di dokumen.
+Spawner tersebut di implementasikan di Level 2, di bagian akhir map, sebelum mencapai finish.
+
+Tentu saja, setelah mencoba spawn_rate bernilai 0.3, saya merasa game tersebut sudah mencapai titik "unplayable".
+Kemudian, saya mengubahnya ke 1.0, dimana game masih dapat diselesaikan, namun masih cukup sulit, karena movement speed dari Player yang relatif lambat dibanding Enemy membuat Player harus melompat-melompat di satu titik tanpa progres kemajuan yang banyak.
+Oleh karena itu, saya menaikkannya ke 1.5, dan di angka ini, saya merasa game sudah cukup "balanced", dengan Level yang tidak terlalu sulit, namun tidak terlalu mudah juga.
